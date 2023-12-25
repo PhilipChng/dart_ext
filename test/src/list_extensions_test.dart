@@ -2,11 +2,11 @@ import 'package:dart_ext/dart_ext.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final emptyList = <String>[];
-  final nonEmptyList = <String>['a'];
-  const List<String>? nullList = null;
-
   group('ListNullable', () {
+    final emptyList = <String>[];
+    final nonEmptyList = <String>['a'];
+    const List<String>? nullList = null;
+
     test('isNullOrEmpty', () {
       expect(nullList.isNullOrEmpty, isTrue);
       expect(emptyList.isNullOrEmpty, isTrue);
@@ -17,6 +17,17 @@ void main() {
       expect(nullList.isNotNullOrEmpty, isFalse);
       expect(emptyList.isNotNullOrEmpty, isFalse);
       expect(nonEmptyList.isNotNullOrEmpty, isTrue);
+    });
+  });
+
+  group('ListIntExt', () {
+    test('toStringWithComma', () {
+      final emptyList = <int>[];
+      final nonEmptyList = <int>[1, 2, 3];
+      const List<int>? nullList = null;
+      expect(nullList.toStringWithComma, '');
+      expect(emptyList.toStringWithComma, '');
+      expect(nonEmptyList.toStringWithComma, '1, 2, 3');
     });
   });
 }
